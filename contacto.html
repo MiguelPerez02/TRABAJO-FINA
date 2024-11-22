@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: url('imagen.png') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            max-width: 600px;
+        }
+
+        h2, p, ul, .form-control::placeholder {
+            color: #fff;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            border-color: #007bff;
+        }
+
+        .btn-group-custom {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-custom {
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 20px;
+        }
+
+        .btn-back {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 5px 15px;
+            font-size: 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .btn-back:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .parsley-errors-list {
+            color: #ff6666;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .modal-sm {
+            max-width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón de regreso -->
+    <a href="home.html" class="btn-back">Atrás</a>
+
+    <div class="container py-5">
+        <section class="text-center mb-4">
+            <h2>Contacto</h2>
+            <p>Para más información sobre nuestros cursos, no dudes en contactarnos:</p>
+            <ul class="list-unstyled">
+                <li><strong>Dirección:</strong> Calle 72 #12-34, Ciudad Cali</li>
+                <li><strong>Teléfono:</strong> +57 315 456 7890</li>
+                <li><strong>Email:</strong> info@Universidadlampardelvalle.edu.co</li>
+            </ul>
+        </section>
+        <form id="contactForm" data-parsley-validate>
+            <div class="form-group">
+                <label for="nombre" class="text-white">Nombre</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="nombre" 
+                    placeholder="Escribe tu nombre completo" 
+                    required 
+                    data-parsley-trigger="keyup" 
+                    data-parsley-length="[3, 50]" 
+                    aria-label="Nombre">
+            </div>
+            <div class="form-group">
+                <label for="email" class="text-white">Correo Electrónico</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    placeholder="correo@ejemplo.com" 
+                    required 
+                    data-parsley-trigger="keyup" 
+                    aria-label="Correo Electrónico">
+            </div>
+            <div class="form-group">
+                <label for="mensaje" class="text-white">Mensaje</label>
+                <textarea 
+                    class="form-control" 
+                    id="mensaje" 
+                    rows="3" 
+                    placeholder="Escribe tu mensaje aquí..." 
+                    required 
+                    data-parsley-trigger="keyup" 
+                    data-parsley-length="[10, 300]" 
+                    aria-label="Mensaje"></textarea>
+            </div>
+            <div class="btn-group-custom">
+                <button type="submit" class="btn btn-primary btn-custom">Enviar</button>
+                <button type="button" class="btn btn-outline-info btn-custom" data-toggle="modal" data-target="#infoModal">
+                    Más Información
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="infoModalLabel">Más Información</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: black;">¡Síguenos en nuestras redes sociales para más información!</p>
+                    <ul>
+                        <li style="color: black;">Facebook: <a href="#">@UniversidadLampardelValle</a></li>
+                        <li style="color: black;">Instagram: <a href="#">@universidadlampardelvalle</a></li>
+                        <li style="color: black;">Twitter: <a href="#">@UniLampardelValle</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmationModalLabel">¡Gracias por contactarnos!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Hemos recibido tus datos. Nos pondremos en contacto contigo en cualquier momento. ¡Gracias por tu interés!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://parsleyjs.org/dist/parsley.min.js"></script>
+    <script src="https://parsleyjs.org/dist/i18n/es.js"></script>
+
+    <script>
+        // Parsley.js
+        $('#contactForm').parsley();
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            if ($('#contactForm').parsley().isValid()) {
+                $('#confirmationModal').modal('show');
+
+                document.getElementById('nombre').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('mensaje').value = '';
+            }
+        });
+    </script>
+</body>
+</html>
